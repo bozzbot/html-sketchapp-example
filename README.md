@@ -5,8 +5,9 @@ Sketch to highlight issues or propose improvements. They found the [HTML Sketch 
 which lets them import an almost Sketch file  `.asketch.json`.
 
 This is a small Node.js utility that can provide such a JSON file but currently
-needs local installation. So at the moment they need to as a developer (you) to
-run this as most have no Node environment locally.
+needs local installation. So at the moment they need to ask a friendly developer
+(you) to run this as most have no Node environment locally.
+
 So here we are. Let's go through this.
 
 ## What to tell a designer
