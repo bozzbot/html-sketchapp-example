@@ -22,6 +22,7 @@ if (process.argv[3] && process.argv[3].split) {
   }
 }
 
+// Read file name from CLI
 if (process.argv[4] && process.argv[4].endsWith('.asketch.json')) {
   outputFile = `../${process.argv[4]}`;
 }

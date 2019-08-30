@@ -13,7 +13,7 @@ So here we are. Let's go through this.
 ## What to tell a designer
 
 1. Install the latest version of the [Sketch Plugin](https://github.com/html-sketchapp/html-sketchapp/releases)
-2. Import the provided `*.asketch.json` over `Plugins > From Asketch > Import` and chose the file
+2. Import the provided `*.asketch.json` in Sketch over `Plugins > From *Almost* Sketch to Sketch` and chose the file
 3. Check for any z-index and grouping issues and make sure all images are there
 
 ## How do I run it?
