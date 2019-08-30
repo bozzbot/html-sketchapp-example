@@ -3,11 +3,28 @@ const fs = require('fs');
 const path = require('path');
 
 if (process.argv.length < 3) {
+  console.info('Example usage:');
+  console.info('> npm run inject https://station.ch');
+  console.info('> npm run inject https://station.ch 320x576 myfilename.asketch.json');
+  console.info('');
   throw new Error('Please provide input URL');
 }
 
 const url = process.argv[2];
-const outputFile = '../page.asketch.json';
+let outputFile = '../page.asketch.json';
+let dimensions = [ '1280', '800' ];
+
+// Read dimensions from CLI
+if (process.argv[3] && process.argv[3].split) {
+  const sizes = process.argv[3].split('x');
+  if (Array.isArray(sizes) && sizes.length === 2) {
+    dimensions = sizes;
+  }
+}
+
+if (process.argv[4] && process.argv[4].endsWith('.asketch.json')) {
+  outputFile = `../${process.argv[4]}`;
+}
 
 function wait (ms) {
   return new Promise(resolve => setTimeout(() => resolve(), ms));
@@ -16,18 +33,7 @@ function wait (ms) {
 puppeteer.launch().then(async browser => {
   const page = await browser.newPage();
 
-  const vportDesktop = {
-    w: 1280,
-    h: 800
-  };
-  const vportMobile = {
-    w: 375,
-    h: 667
-  };
-
-  let vport = vportMobile;
-
-  await page.setViewport({width: vport.w, height: vport.h});
+  await page.setViewport({width: Number.parseInt(dimensions[0]), height: Number.parseInt(dimensions[1])});
   await page.goto(url, {
     waitUntil: 'networkidle2'
   });
